@@ -1,0 +1,19 @@
+package com.example.demo.services.interfaces;
+
+import java.util.List;
+
+import com.example.demo.dto.MessageDto;
+import com.example.demo.entities.Particulier;
+
+public interface IParticulierService {
+
+	MessageDto save(Particulier Particulier);
+
+	MessageDto delete(Long id);
+
+	boolean login(String nom, String prenom);
+
+	List<Particulier> show();
+
+
+}

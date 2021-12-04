@@ -1,0 +1,99 @@
+<section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img
+                src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg"
+                alt="Sample photo"
+                class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+              />
+            </div>
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Entreprise registration form</h3>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="form3Example1m" class="form-control form-control-lg" [(ngModel)]="entreprise.mail" />
+                      <label class="form-label" for="form3Example1m"  >Email</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="form3Example1n" class="form-control form-control-lg" [(ngModel)]="entreprise.adress" />
+                      <label class="form-label" for="form3Example1n"  >Adresse</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="form3Example1m1" class="form-control form-control-lg"  [(ngModel)]="entreprise.deuxiemeNumeroTelephone"/>
+                      <label class="form-label" for="form3Example1m1"  >deuxiemeNumeroTel</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="form3Example1n1" class="form-control form-control-lg" [(ngModel)]="entreprise.nom" />
+                      <label class="form-label" for="form3Example1n1"  >nom</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example8" class="form-control form-control-lg"  [(ngModel)]="entreprise.nomEntreprise"/>
+                  <label class="form-label" for="form3Example8"  >nomEntreprise</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example8" class="form-control form-control-lg" [(ngModel)]="entreprise.numeroTelephone"/>
+                  <label class="form-label" for="form3Example8"  >numero de telephone</label>
+                </div>
+
+
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example9" class="form-control form-control-lg" [(ngModel)]="entreprise.pays" />
+                  <label class="form-label" for="form3Example9" >pays</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example90" class="form-control form-control-lg"  [(ngModel)]="entreprise.prenom"/>
+                  <label class="form-label" for="form3Example90">prenom</label>
+                </div>
+
+
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example97" class="form-control form-control-lg" [(ngModel)]="entreprise.registreCommerce" />
+                  <label class="form-label" for="form3Example97">registerCommerce</label>
+                </div>
+
+
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example97" class="form-control form-control-lg" [(ngModel)]="entreprise.ville" />
+                  <label class="form-label" for="form3Example97">ville</label>
+                </div>
+                <div class="d-flex justify-content-end pt-3">
+                  <button type="button" class="btn btn-warning btn-lg ms-2" (click)="save()">Submit form</button>
+                </div>
+
+                
+                {{message}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

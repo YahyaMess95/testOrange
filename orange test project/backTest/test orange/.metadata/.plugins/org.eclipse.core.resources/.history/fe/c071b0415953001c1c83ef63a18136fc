@@ -1,0 +1,9 @@
+package com.example.demo.services.interfaces;
+
+import com.example.demo.dto.Message;
+
+public interface ICvService {
+
+	Message delete(Long id);
+
+}

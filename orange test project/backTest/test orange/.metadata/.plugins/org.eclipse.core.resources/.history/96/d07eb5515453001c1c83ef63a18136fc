@@ -1,0 +1,91 @@
+package com.example.demo.services.implementations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Particulier;
+import com.example.demo.repositories.ParticulierRepository;
+import com.example.demo.services.interfaces.IParticulierService;
+import com.example.demo.repositories.ParticulierRepository;
+
+public class ParticulierService  implements IParticulierService{
+
+	
+	@Autowired
+	ParticulierRepository ER ; 
+	
+	
+	@Override
+
+	
+	public Message save(Particulier Particulier) 
+	{
+		if (ER.existsByEMail(Particulier.getEmail() ) == true ) {
+			
+			return new Message(true , "false" , "email exist");
+			
+		}
+		
+		ER.save(Particulier) ;
+		return new Message(true , "true" , "added succefuly");
+		
+		
+	} 
+	
+	
+	@Override
+	public Message update(Particulier Particulier , long id) 
+	{
+		if (ER.existsById(Particulier.getId() ) == true ) {
+			
+			Particulier.setAdress(ER.getById(id).getAdress());
+	     	Particulier.setDeuxiemeNumeroTelephone(ER.getById(id).getDeuxiemeNumeroTelephone());
+	     	Particulier.setMail(ER.getById(id).getMail());
+	     	Particulier.setNom(ER.getById(id).getNom());
+	     	Particulier.setNomParticulier(ER.getById(id).getNomParticulier());
+	     	Particulier.setNumeroTelephone(ER.getById(id).getNumeroTelephone());
+	     	Particulier.setPays(ER.getById(id).getPays());
+	     	Particulier.setPrenom(ER.getById(id).getPrenom());
+	     	Particulier.setRegistreCommerce(ER.getById(id).getRegistreCommerce());
+	     	Particulier.setVille(ER.getById(id).getVille());
+			
+			
+			
+			ER.save(Particulier) ;
+			return new Message(true , "true" , "Particulier Update");
+			
+		}
+		
+		
+		return new Message(false , "false" , "Particulier does not exist");
+		
+	} 
+	
+	
+	
+	@Override
+	public Message delete(Long id) {
+		if (ER.existsById(id) == true ) 
+		{
+			ER.deleteById(id);
+			return new Message(true , "true" , "Particulier deleted");
+			
+		}
+		
+		return new Message(false , "false" , "Particulier deleted");
+	}
+
+	
+	
+	public boolean login(String nom , String prenom)
+	{
+		if (ER.existsByNom(nom) == true && ER.existsByPrenom(prenom)==true ) {
+			return true ; 
+		}
+		return false ; 
+	}
+		
+	
+	
+	
+}

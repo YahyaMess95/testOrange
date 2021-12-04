@@ -1,0 +1,92 @@
+package com.example.demo.services.implementations;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Cv;
+import com.example.demo.repositories.CvRepository;
+import com.example.demo.repositories.CvRepository;
+import com.example.demo.services.interfaces.ICvService;
+
+public class CvService implements ICvService {
+	@Autowired
+	CvRepository ER ; 
+	
+	
+	
+	@Override
+	
+	public List<Cv> show()
+	{
+		return ER.findAll() ; 
+	}
+	
+	
+	@Override
+	
+	public Message save(Cv Cv) 
+	{
+		if (ER.existsByRegistreCommerce(Cv.getRegistreCommerce() ) == true ) {
+			
+			return new Message(true , "false" , "email exist");
+			
+		}
+		
+		ER.save(Cv) ;
+		return new Message(true , "true" , "added succefuly");
+		
+		
+	} 
+	
+	
+	@Override
+	public Message update(Cv Cv , long id) 
+	{
+		if (ER.existsById(Cv.getId() ) == true ) {
+			
+			Cv.setAdress(ER.getById(id).getAdress());
+	     	Cv.setDeuxiemeNumeroTelephone(ER.getById(id).getDeuxiemeNumeroTelephone());
+	     	Cv.setMail(ER.getById(id).getMail());
+	     	Cv.setNom(ER.getById(id).getNom());
+	     	Cv.setNomCv(ER.getById(id).getNomCv());
+	     	Cv.setNumeroTelephone(ER.getById(id).getNumeroTelephone());
+	     	Cv.setPays(ER.getById(id).getPays());
+	     	Cv.setPrenom(ER.getById(id).getPrenom());
+	     	Cv.setRegistreCommerce(ER.getById(id).getRegistreCommerce());
+	     	Cv.setVille(ER.getById(id).getVille());
+			
+			
+			
+			ER.save(Cv) ;
+			return new Message(true , "true" , "Cv Update");
+			
+		}
+		
+		
+		return new Message(false , "false" , "Cv does not exist");
+		
+	} 
+	
+	
+	
+	@Override
+	
+	public Message delete(Long id) {
+		if (ER.existsById(id) == true ) 
+		{
+			ER.deleteById(id);
+			return new Message(true , "true" , "Cv deleted");
+			
+		}
+		
+		return new Message(false , "false" , "Cv deleted");
+	}
+
+	
+	
+	
+		
+	
+}

@@ -1,0 +1,16 @@
+package com.example.demo.services.interfaces;
+
+import java.util.List;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Formations;
+
+public interface IFormationService {
+
+	Message save(Formations formation);
+
+	Message delete(long id);
+
+	List<Formations> show(long id);
+
+}

@@ -1,0 +1,20 @@
+package com.example.demo.services;
+
+import java.util.List;
+
+import com.example.demo.dto.MessageDto;
+import com.example.demo.entities.Entreprise;
+
+public interface IEntrepriseService {
+
+	MessageDto save(Entreprise entreprise);
+
+	MessageDto delete(Long id);
+
+	MessageDto update(Entreprise entreprise, long id);
+
+	boolean login(String nom, String prenom);
+
+	List<Entreprise> show();
+
+}

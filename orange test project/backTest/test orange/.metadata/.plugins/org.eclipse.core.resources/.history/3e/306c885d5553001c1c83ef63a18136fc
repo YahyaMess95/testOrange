@@ -1,0 +1,15 @@
+package com.example.demo.services.interfaces;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Particulier;
+
+public interface IParticulierService {
+
+	Message save(Particulier Particulier);
+
+	Message delete(Long id);
+
+	boolean login(String nom, String prenom);
+
+
+}

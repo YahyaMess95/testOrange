@@ -1,0 +1,66 @@
+
+
+<br><br>
+<h1>Entreprise</h1>
+<br><br>
+<br><br>
+
+<div class="container" id="htmlData">
+  <div class="row">
+    <div class="col-md">
+      <p-card header="Les Cvs">
+
+          <table class="table">
+            <thead>
+              <tr>
+
+                <th scope="col">nom</th>
+                <th scope="col">prenom</th>
+                <th scope="col">email</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let cv of ListCv">
+                <td>{{cv.nom}}</td>
+                <td>{{cv.prenom}}</td>
+                <td>{{cv.email}}</td>
+                <td><button (click)="detailPart(cv.id)">detail </button> </td>
+              </tr>
+            </tbody>
+          </table>
+
+      </p-card>
+    </div>
+
+    <div class="col-md">
+
+      <p-card header="details">
+        <ul class="list-group" >
+          <li class="list-group-item list-group-item-warning">Details</li>
+          <ul class="list-group" >
+            <li class="list-group-item ">date de naissance : {{ListDetail.dateNaissance}}</li>
+            <li class="list-group-item ">n° telephoe : {{ListDetail.numeroTelephone}}</li>
+            <li class="list-group-item ">ville : {{ListDetail.ville}}</li>
+            <li class="list-group-item ">pays : {{ListDetail.dateNaissance}}</li>
+
+
+          </ul>
+        </ul>
+
+
+        <ul class="list-group" >
+          <li class="list-group-item list-group-item-warning">Formation</li>
+          <ul class="list-group" *ngFor="let cv of ListFormation" >
+            <li class="list-group-item ">{{cv.formation}}</li>
+
+
+
+          </ul>
+        </ul>
+      </p-card>
+    </div>
+
+  </div>
+</div>
+

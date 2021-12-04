@@ -1,0 +1,62 @@
+package com.example.demo.services.implementations;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Entreprise;
+import com.example.demo.entities.Formations;
+import com.example.demo.repositories.FormationsRepository;
+import com.example.demo.services.interfaces.IFormationService;
+
+public class FormationService implements IFormationService {
+
+	@Autowired
+	FormationsRepository fr;
+	
+	@Override
+	public Message save(Formations formation) {
+		if (fr.existsByFormation(formation.getFormation()) == true) {
+
+			return new Message(true, "false", "formation exist");
+
+		}
+
+		fr.save(formation);
+		return new Message(true, "true", "added succefuly");
+
+	}
+
+
+	@Override
+	public Message delete(long id) {
+		if (fr.existsById(id)) {
+
+			fr.deleteById(id);
+			return new Message(true, "true", "deleted succefuly");
+		}
+
+		return new Message(true, "false", "formation does not exist");
+	}
+
+
+	@Override
+	List<Formations> show(long id) {
+
+		List<Formations> formation = new ArrayList<Formations>();
+
+		for (int i = 0; i < fr.findAll().size(); i++) {
+			if (fr.findAll().get(i).getCv().getId() == id) {
+				formation.add(fr.findAll().get(i));
+			}
+
+		}
+
+		return formation;
+
+	}
+
+}

@@ -1,0 +1,90 @@
+package com.example.demo.services.implementations;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Cv;
+import com.example.demo.repositories.CvRepository;
+import com.example.demo.repositories.CvRepository;
+import com.example.demo.services.interfaces.ICvService;
+
+public class CvService implements ICvService {
+	@Autowired
+	CvRepository ER ; 
+	
+	
+	
+	@Override
+	
+	public List<Cv> show()
+	{
+		return ER.findAll() ; 
+	}
+	
+	
+	@Override
+
+	
+	public Message save(Cv Cv) 
+	{
+		if (ER.existsById(Cv.getId() ) == true ) {
+			
+			return new Message(true , "false" , "email exist");
+			
+		}
+		
+		ER.save(Cv) ;
+		return new Message(true , "true" , "added succefuly");
+		
+		
+	} 
+	
+	
+	@Override
+	@Override
+	public Message update(Cv Cv , long id) 
+	{
+		if (ER.existsById(Cv.getId() ) == true ) {
+			
+			Cv.setId(id);
+			Cv.setFormations(ER.getById(id).getFormations());
+			Cv.setInfoPerso(ER.getById(id).getInfoPerso());
+			
+			
+	     	
+			
+			
+			
+			ER.save(Cv) ;
+			return new Message(true , "true" , "Cv Update");
+			
+		}
+		
+		
+		return new Message(false , "false" , "Cv does not exist");
+		
+	} 
+	
+	
+	
+	@Override
+	
+	public Message delete(Long id) {
+		if (ER.existsById(id) == true ) 
+		{
+			ER.deleteById(id);
+			return new Message(true , "true" , "Cv deleted");
+			
+		}
+		
+		return new Message(false , "false" , "Cv deleted");
+	}
+
+	
+	
+	
+		
+	
+}

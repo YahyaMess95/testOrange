@@ -1,0 +1,90 @@
+package com.example.demo.services.implementations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Entreprise;
+import com.example.demo.repositories.EntrepriseRepository;
+import com.example.demo.services.interfaces.IEntrepriseService;
+@Service
+public class EntrepriseService implements IEntrepriseService {
+
+	@Autowired
+	EntrepriseRepository ER ; 
+	
+	
+	@Override
+	
+	public Message save(Entreprise entreprise) 
+	{
+		if (ER.existsByRegistreCommerce(entreprise.getRegistreCommerce() ) == true ) {
+			
+			return new Message(true , "false" , "email exist");
+			
+		}
+		
+		ER.save(entreprise) ;
+		return new Message(true , "true" , "added succefuly");
+		
+		
+	} 
+	
+	
+	@Override
+	public Message update(Entreprise entreprise , long id) 
+	{
+		if (ER.existsById(entreprise.getId() ) == true ) {
+			
+			entreprise.setAdress(ER.getById(id).getAdress());
+	     	entreprise.setDeuxiemeNumeroTelephone(ER.getById(id).getDeuxiemeNumeroTelephone());
+	     	entreprise.setMail(ER.getById(id).getMail());
+	     	entreprise.setNom(ER.getById(id).getNom());
+	     	entreprise.setNomEntreprise(ER.getById(id).getNomEntreprise());
+	     	entreprise.setNumeroTelephone(ER.getById(id).getNumeroTelephone());
+	     	entreprise.setPays(ER.getById(id).getPays());
+	     	entreprise.setPrenom(ER.getById(id).getPrenom());
+	     	entreprise.setRegistreCommerce(ER.getById(id).getRegistreCommerce());
+	     	entreprise.setVille(ER.getById(id).getVille());
+			
+			
+			
+			ER.save(entreprise) ;
+			return new Message(true , "true" , "entreprise Update");
+			
+		}
+		
+		
+		return new Message(false , "false" , "entreprise does not exist");
+		
+	} 
+	
+	
+	
+	@Override
+	public Message delete(Long id) {
+		if (ER.existsById(id) == true ) 
+		{
+			ER.deleteById(id);
+			return new Message(true , "true" , "entreprise deleted");
+			
+		}
+		
+		return new Message(false , "false" , "entreprise deleted");
+	}
+
+	
+	@Override
+	public boolean login(String nom , String prenom)
+	{
+		if (ER.existsByNom(nom) == true && ER.existsByPrenom(prenom)==true ) {
+			return true ; 
+		}
+		return false ; 
+	}
+		
+	
+	
+	
+	
+}

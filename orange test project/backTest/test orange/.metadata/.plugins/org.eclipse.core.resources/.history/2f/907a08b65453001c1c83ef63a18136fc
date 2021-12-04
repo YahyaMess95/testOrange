@@ -1,0 +1,14 @@
+package com.example.demo.services.interfaces;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Particulier;
+
+public interface IParticulierService {
+
+	Message save(Particulier Particulier);
+
+	Message delete(Long id);
+	boolean existsByNom(String nom) ;
+	boolean existsByPrenom(String prenom) ;
+
+}

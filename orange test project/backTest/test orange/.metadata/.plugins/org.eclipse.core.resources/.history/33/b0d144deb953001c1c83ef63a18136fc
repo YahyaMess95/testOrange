@@ -1,0 +1,39 @@
+package com.example.demo.entities;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data	
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Cv {
+	
+	@Id
+	@GeneratedValue
+	private long id ;
+	
+	private String infoPerso ;
+	
+    @OneToMany(mappedBy = "cv", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Formations> formations ;
+    
+
+    @OneToOne(mappedBy = "cv", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+	private File file ; 
+	
+
+	
+}

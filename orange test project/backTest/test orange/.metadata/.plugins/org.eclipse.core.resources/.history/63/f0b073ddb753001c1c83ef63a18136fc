@@ -1,0 +1,24 @@
+package com.example.demo.services.implementations;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Cv;
+import com.example.demo.repositories.CvRepository;
+import com.example.demo.services.interfaces.IFileService;
+@Service
+public class FileService implements IFileService{
+
+	@Autowired
+	CvRepository ER ; 
+	
+	
+	
+	
+
+		
+	
+}

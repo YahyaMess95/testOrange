@@ -1,0 +1,94 @@
+package com.example.demo.services.implementations;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Particulier;
+import com.example.demo.repositories.ParticulierRepository;
+import com.example.demo.services.interfaces.IParticulierService;
+import com.example.demo.repositories.ParticulierRepository;
+@Service
+public class ParticulierService  implements IParticulierService{
+
+	
+	@Autowired
+	ParticulierRepository ER ; 
+	
+	
+	@Override
+
+	public List<Particulier> show()
+	{
+	return	ER.findAll() ; 
+	}
+	
+	
+	
+	@Override
+	public Message save(Particulier Particulier) 
+	{
+		if (ER.existsByEmail(Particulier.getEmail() ) == true ) {
+			
+			return new Message(true , "false" , "email exist");
+			
+		}
+		
+		ER.save(Particulier) ;
+		return new Message(true , "true" , "added succefuly");
+		
+		
+	} 
+	
+	/*
+	@Override
+	public Message update (Particulier Particulier , long id) 
+	{
+		if (ER.existsById(Particulier.getId() ) == true ) {
+			
+			
+			
+			
+			
+			ER.save(Particulier) ;
+			return new Message(true , "true" , "Particulier Update");
+			
+		}
+		
+		
+		return new Message(false , "false" , "Particulier does not exist");
+		
+	} */
+	
+	
+	
+	@Override
+	public Message delete(Long id) {
+		if (ER.existsById(id) == true ) 
+		{
+			ER.deleteById(id);
+			return new Message(true , "true" , "Particulier deleted");
+			
+		}
+		
+		return new Message(false , "false" , "Particulier deleted");
+	}
+
+	
+	
+	@Override
+	public boolean login(String nom , String prenom)
+	{
+		if (ER.existsByNom(nom) == true && ER.existsByPrenom(prenom)==true ) {
+			return true ; 
+		}
+		return false ; 
+	}
+
+	
+	
+	
+	
+}

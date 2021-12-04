@@ -1,0 +1,10 @@
+package com.example.demo.services.interfaces;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Entreprise;
+
+public interface IEntrepriseService {
+
+	Message save(Entreprise entreprise);
+
+}

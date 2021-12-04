@@ -1,0 +1,30 @@
+package com.example.demo.services.implementations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.dto.Message;
+import com.example.demo.entities.Entreprise;
+import com.example.demo.repositories.FormationsRepository;
+import com.example.demo.services.interfaces.IFormationService;
+
+public class FormationService implements IFormationService {
+
+	
+	@Autowired
+	FormationsRepository fr ; 
+	public Message save(Entreprise entreprise) 
+	{
+		if (fr.existsByRegistreCommerce(entreprise.getRegistreCommerce() ) == true ) {
+			
+			return new Message(true , "false" , "register exist");
+			
+		}
+		
+		ER.save(entreprise) ;
+		return new Message(true , "true" , "added succefuly");
+		
+		
+	} 
+
+	
+}

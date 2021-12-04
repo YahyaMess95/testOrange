@@ -1,0 +1,28 @@
+package com.example.demo.services.implementations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Entreprise;
+import com.example.demo.repositories.EntrepriseRepository;
+import com.example.demo.services.interfaces.IEntrepriseService;
+@Service
+public class EntrepriseService implements IEntrepriseService {
+
+	@Autowired
+	EntrepriseRepository ER ; 
+	
+	
+	@Override
+	public Message save(Entreprise entreprise) 
+	{
+		if (ER.existsById(null) ) {
+			
+		}
+		
+		
+	} 
+	
+	
+	
+}

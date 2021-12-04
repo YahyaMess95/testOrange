@@ -1,0 +1,45 @@
+
+
+<br><br>
+<h1>Particulier</h1>
+<br><br>
+<br><br>
+
+<div class="container" id="htmlData">
+  <div class="row">
+    <div class="col-md">
+      <p-card header="Infos perso">
+        <ul class="list-group" >
+          <li class="list-group-item"> email : {{listParticulier.email}} </li>
+          <li class="list-group-item"> nom : {{listParticulier.nom}} </li>
+          <li class="list-group-item"> prenom : {{listParticulier.prenom}} </li>
+          <li class="list-group-item"> n° telephone : {{listParticulier.numeroTelephone}} </li>
+          <li class="list-group-item"> adresse : {{listParticulier.adress}} </li>
+        </ul>
+      </p-card>
+    </div>
+
+    <div class="col-md">
+
+      <p-card header="Liste des formations">
+        <ul class="list-group" *ngFor="let book of listformation">
+          <li class="list-group-item">  {{book.formation}} </li>
+
+        </ul>
+      </p-card>
+    </div>
+    <div class="col-md">
+
+      <p-card header="Ajouter Formation">
+      <p-chips [(ngModel)]="values"></p-chips>
+      </p-card>
+<br>
+      <button pButton type="button" label="Add formations" (click)="addCv()" ></button>
+      <button pButton type="button" label="Download pdf" style="background-color: red;"  (click)="openPDF()"></button>
+      <div class="col-md-4 text-right">
+
+      </div>
+    </div>
+  </div>
+</div>
+
